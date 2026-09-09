@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 24th Birthday 🕸️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+--maroon-deep:#1a0405;
+--maroon:#3a0a0d;
+--red:#e5202c;
+--red-dark:#a8121c;
+--blue:#1f3fae;
+--white:#f3ede8;
+--grey:#b9aeae;
+--gold:#ffc63a;
+--paper:#f4ecd8;
+--font-display:'Playfair Display', serif;
+--font-condensed:'Bebas Neue', sans-serif;
+--font-body:'Inter', sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+font-family:var(--font-body);
+color:var(--white);
+background:
+repeating-linear-gradient(135deg, rgba(0,0,0,0.35) 0 26px, rgba(0,0,0,0) 26px 52px),
+linear-gradient(160deg, var(--maroon) 0%, var(--maroon-deep) 60%, #0d0202 100%);
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:30px 16px;
+overflow-x:hidden;
+position:relative;
+}
+::selection{background:var(--red);color:#fff;}
+a:focus-visible, button:focus-visible{outline:3px solid var(--gold); outline-offset:3px;}
+.filmstrip{
+position:fixed;
+top:0;
+bottom:0;
+width:46px;
+background:
+repeating-linear-gradient(#050505 0 34px, #050505 34px, transparent 34px 40px),
+#050505;
+background-size:100% 40px;
+opacity:0.55;
+z-index:0;
+}
+.filmstrip.left{left:0; transform:skewY(-1deg);}
+.filmstrip.right{right:0; transform:skewY(1deg);}
+.filmstrip::before{
+content:"";
+position:absolute;
+inset:0;
+background-image:repeating-linear-gradient(180deg, transparent 0 14px, rgba(255,255,255,0.9) 14px 22px, transparent 22px 40px);
+-webkit-mask-image:radial-gradient(circle at 8px 0, transparent 6px, black 7px);
+}
+@media (max-width:900px){ .filmstrip{display:none;} }
+/* ---- cute floating decorations ---- */
+.decor{
+position:fixed;
+pointer-events:none;
+z-index:5;
+}
+.decor .halo{
+position:absolute;
+inset:-30%;
+border-radius:50%;
+background:radial-gradient(circle, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.06) 55%, transparent 75%);
+}
+.decor svg{ position:relative; width:100%; filter:drop-shadow(0 3px 6px rgba(0,0,0,0.55)); }
+.decor.spider1{ top:6%; left:7%; width:50px; animation:wiggle 3.4s ease-in-out infinite; }
+.decor.spider2{ bottom:8%; right:6%; width:44px; animation:wiggle 4s ease-in-out infinite 0.4s; }
+.decor.spider3{ top:14%; right:9%; width:36px; animation:wiggle 3s ease-in-out infinite 0.8s; }
+@keyframes wiggle{
+0%,100%{ transform:rotate(-8deg) translateY(0); }
+50%{ transform:rotate(8deg) translateY(-6px); }
+}
+@media (max-width:700px){ .decor.spider1,.decor.spider2,.decor.spider3{ display:none; } }
+.dangler{
+position:absolute;
+top:0;
+left:50%;
+transform:translateX(-50%);
+z-index:6;
+display:flex;
+flex-direction:column;
+align-items:center;
+animation:dangleSwing 4s ease-in-out infinite;
+transform-origin:top center;
+}
+.dangler .thread{ width:1.5px; height:38px; background:rgba(255,255,255,0.55); }
+.dangler .halo-wrap{ position:relative; width:38px; height:38px; margin-top:-2px; }
+.dangler .halo-wrap .halo{ position:absolute; inset:-40%; border-radius:50%; background:radial-gradient(circle, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.08) 55%, transparent 75%); }
+.dangler svg{ position:relative; width:100%; height:100%; filter:drop-shadow(0 3px 5px rgba(0,0,0,0.5)); }
+@keyframes dangleSwing{
+0%,100%{ transform:translateX(-50%) rotate(-6deg); }
+50%{ transform:translateX(-50%) rotate(6deg); }
+}
+.stage{
+position:relative;
+z-index:1;
+max-width:640px;
+width:100%;
+}
+.app-card{
+position:relative;
+background:linear-gradient(165deg,#2a0507 0%, #14040a 55%, #0a0207 100%);
+border:3px solid rgba(255,255,255,0.85);
+border-radius:22px;
+box-shadow:0 30px 60px rgba(0,0,0,0.55), 0 0 0 8px rgba(0,0,0,0.25);
+overflow:visible;
+transform:rotate(-0.4deg);
+}
+.app-inner{transform:rotate(0.4deg); padding:0 0 46px; border-radius:19px; overflow:hidden; position:relative;}
+.nav{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:22px 30px;
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.logo{display:flex; align-items:center; gap:10px;}
+.logo .mark{
+width:38px;height:38px;
+border-radius:8px;
+background:linear-gradient(160deg,var(--red),var(--red-dark));
+display:flex;align-items:center;justify-content:center;
+font-size:18px;
+box-shadow:0 0 0 2px var(--gold);
+}
+.logo .txt{font-family:var(--font-condensed); font-size:13px; letter-spacing:2px; color:var(--grey); line-height:1.2;}
+.logo .txt b{color:#fff; display:block; font-size:14px;}
+.badge-pill{
+background:var(--red);
+color:#fff;
+font-size:12px;
+font-weight:700;
+padding:7px 15px;
+border-radius:999px;
+letter-spacing:0.5px;
+}
+.backdrop{
+position:relative;
+min-height:260px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+gap:22px;
+padding:44px 26px 40px;
+background:
+radial-gradient(circle at 50% 35%, rgba(229,32,44,0.28), transparent 55%),
+linear-gradient(180deg, #1c0507, #0c0305);
+overflow:hidden;
+}
+.backdrop svg.web{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+opacity:0.28;
+}
+.backdrop svg.web circle, .backdrop svg.web line{
+fill:none;
+stroke:#fff;
+stroke-width:1;
+}
+.headline{position:relative; z-index:2;}
+.headline .eyebrow{
+font-family:var(--font-condensed);
+letter-spacing:5px;
+font-size:13px;
+color:var(--gold);
+}
+.headline h1{
+font-family:var(--font-display);
+font-weight:900;
+font-size:clamp(28px,7vw,42px);
+line-height:1.15;
+color:#fff;
+text-shadow:0 4px 24px rgba(0,0,0,0.6);
+margin-top:8px;
+}
+.shoot-btn{
+position:relative;
+z-index:2;
+font-family:var(--font-condensed);
+font-size:18px;
+letter-spacing:1.5px;
+color:#fff;
+background:linear-gradient(160deg,var(--red),var(--red-dark));
+border:none;
+padding:15px 30px;
+border-radius:999px;
+cursor:pointer;
+box-shadow:0 8px 0 rgba(0,0,0,0.35);
+transition:transform 0.2s ease;
+}
+.shoot-btn:hover{ transform:translateY(-2px); }
+.shoot-btn:active{ transform:translateY(2px); box-shadow:0 4px 0 rgba(0,0,0,0.35); }
+footer{
+text-align:center;
+padding:22px 20px 4px;
+color:#8f8383;
+font-size:12px;
+}
+/* ---------- FULLSCREEN SEQUENCE ---------- */
+.fullscreen-overlay{
+position:fixed;
+inset:0;
+z-index:100;
+display:flex;
+align-items:center;
+justify-content:center;
+background:radial-gradient(circle at 50% 45%, rgba(58,10,13,0.97), rgba(8,2,4,0.99));
+opacity:0;
+pointer-events:none;
+transition:opacity .35s ease;
+}
+.fullscreen-overlay.active{
+opacity:1;
+pointer-events:auto;
+}
+.web-burst-full{
+position:absolute;
+inset:0;
+display:flex;
+align-items:center;
+justify-content:center;
+opacity:0;
+}
+.web-burst-full svg{ width:100%; height:100%; }
+.web-burst-full line{
+stroke:rgba(255,255,255,0.85);
+stroke-width:2;
+stroke-dasharray:1400;
+stroke-dashoffset:1400;
+}
+.web-burst-full.fire{
+opacity:1;
+animation:burstFadeFull 1.5s ease forwards;
+}
+.web-burst-full.fire line{
+animation:shootFull .7s ease-out forwards;
+}
+@keyframes burstFadeFull{
+0%{opacity:1;} 65%{opacity:1;} 100%{opacity:0;}
+}
+@keyframes shootFull{ to{ stroke-dashoffset:0; } }
+.big-24{
+position:relative;
+z-index:2;
+font-family:var(--font-condensed);
+font-size:clamp(110px,32vw,260px);
+line-height:1;
+color:#fff;
+-webkit-text-stroke:3px var(--red);
+text-shadow:0 0 40px rgba(229,32,44,0.85), 0 0 90px rgba(31,63,174,0.6);
+opacity:0;
+transform:scale(0.4);
+transition:opacity .45s ease, transform .45s cubic-bezier(.34,1.56,.64,1);
+}
+.web-burst-full.fire .big-24{
+opacity:1;
+transform:scale(1);
+transition-delay:.15s;
+}
+.letter-full{
+position:absolute;
+inset:0;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:26px;
+opacity:0;
+transform:scale(0.9);
+transition:opacity .5s ease, transform .5s ease;
+pointer-events:none;
+}
+.letter-full.show{
+opacity:1;
+transform:scale(1);
+pointer-events:auto;
+}
+.letter-inner{
+position:relative;
+max-width:520px;
+width:100%;
+}
+.paper-full{
+max-height:78vh;
+overflow-y:auto;
+background:
+repeating-linear-gradient(var(--paper) 0 31px, #e7dcc2 31px 32px),
+var(--paper);
+border-radius:10px;
+box-shadow:0 30px 70px rgba(0,0,0,0.55);
+padding:36px 30px 26px;
+color:#3a2a1c;
+font-family:'Caveat', cursive;
+font-weight:600;
+font-size:22px;
+line-height:1.55;
+white-space:pre-line;
+}
+.paper-full::-webkit-scrollbar{ width:6px; }
+.paper-full::-webkit-scrollbar-thumb{ background:rgba(0,0,0,0.2); border-radius:4px; }
+.paper-full .sign-off{
+margin-top:10px;
+text-align:right;
+font-family:'Caveat', cursive;
+font-weight:700;
+color:var(--red-dark);
+font-size:28px;
+}
+.close-btn{
+position:absolute;
+top:-16px;
+right:-16px;
+width:42px;
+height:42px;
+border-radius:50%;
+background:var(--red);
+color:#fff;
+border:3px solid #fff;
+font-size:18px;
+font-weight:700;
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 6px 0 rgba(0,0,0,0.35);
+transition:transform .2s ease;
+z-index:3;
+}
+.close-btn:hover{ transform:scale(1.08); }
+.close-btn:active{ transform:scale(0.95); }
+@media (prefers-reduced-motion: reduce){
+*{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+}
+</style>
+</head>
+<body>
+<div class="filmstrip left" aria-hidden="true"></div>
+<div class="filmstrip right" aria-hidden="true"></div>
+<!-- cute floating decorations -->
+<div class="decor spider1" aria-hidden="true">
+<div class="halo"></div>
+<svg viewBox="0 0 60 60">
+<g stroke="#fff" stroke-width="2.5" fill="none" opacity="0.9">
+<line x1="30" y1="18" x2="8" y2="4"/><line x1="30" y1="24" x2="4" y2="20"/><line x1="30" y1="30" x2="4" y2="34"/><line x1="30" y1="36" x2="8" y2="50"/>
+<line x1="30" y1="18" x2="52" y2="4"/><line x1="30" y1="24" x2="56" y2="20"/><line x1="30" y1="30" x2="56" y2="34"/><line x1="30" y1="36" x2="52" y2="50"/>
+</g>
+<ellipse cx="30" cy="30" rx="14" ry="12" fill="#111" stroke="#ffc63a" stroke-width="1.5"/>
+<circle cx="25" cy="26" r="3.4" fill="#fff"/><circle cx="35" cy="26" r="3.4" fill="#fff"/>
+<circle cx="25" cy="26" r="1.5" fill="#111"/><circle cx="35" cy="26" r="1.5" fill="#111"/>
+</svg>
+</div>
+<div class="decor spider2" aria-hidden="true">
+<div class="halo"></div>
+<svg viewBox="0 0 60 60">
+<g stroke="#fff" stroke-width="2.5" fill="none" opacity="0.9">
+<line x1="30" y1="18" x2="8" y2="4"/><line x1="30" y1="24" x2="4" y2="20"/><line x1="30" y1="30" x2="4" y2="34"/><line x1="30" y1="36" x2="8" y2="50"/>
+<line x1="30" y1="18" x2="52" y2="4"/><line x1="30" y1="24" x2="56" y2="20"/><line x1="30" y1="30" x2="56" y2="34"/><line x1="30" y1="36" x2="52" y2="50"/>
+</g>
+<ellipse cx="30" cy="30" rx="14" ry="12" fill="#ffc63a" stroke="#111" stroke-width="1.5"/>
+<circle cx="25" cy="26" r="3.4" fill="#111"/><circle cx="35" cy="26" r="3.4" fill="#111"/>
+<circle cx="25" cy="26" r="1.5" fill="#fff"/><circle cx="35" cy="26" r="1.5" fill="#fff"/>
+</svg>
+</div>
+<div class="decor spider3" aria-hidden="true">
+<div class="halo"></div>
+<svg viewBox="0 0 60 60">
+<g stroke="#fff" stroke-width="2.5" fill="none" opacity="0.9">
+<line x1="30" y1="18" x2="8" y2="4"/><line x1="30" y1="24" x2="4" y2="20"/><line x1="30" y1="30" x2="4" y2="34"/><line x1="30" y1="36" x2="8" y2="50"/>
+<line x1="30" y1="18" x2="52" y2="4"/><line x1="30" y1="24" x2="56" y2="20"/><line x1="30" y1="30" x2="56" y2="34"/><line x1="30" y1="36" x2="52" y2="50"/>
+</g>
+<ellipse cx="30" cy="30" rx="14" ry="12" fill="#fff" stroke="#e5202c" stroke-width="1.6"/>
+<circle cx="25" cy="26" r="3.2" fill="#111"/><circle cx="35" cy="26" r="3.2" fill="#111"/>
+</svg>
+</div>
+<div class="stage">
+<div class="app-card">
+<div class="dangler" aria-hidden="true">
+<div class="thread"></div>
+<div class="halo-wrap">
+<div class="halo"></div>
+<svg viewBox="0 0 60 60">
+<ellipse cx="30" cy="30" rx="13" ry="11" fill="#111" stroke="#ffc63a" stroke-width="1.5"/>
+<circle cx="25" cy="27" r="3" fill="#fff"/><circle cx="35" cy="27" r="3" fill="#fff"/>
+<circle cx="25" cy="27" r="1.3" fill="#111"/><circle cx="35" cy="27" r="1.3" fill="#111"/>
+<g stroke="#fff" stroke-width="1.8" opacity="0.9">
+<line x1="20" y1="34" x2="12" y2="44"/><line x1="26" y1="38" x2="20" y2="50"/>
+<line x1="40" y1="34" x2="48" y2="44"/><line x1="34" y1="38" x2="40" y2="50"/>
+</g>
+</svg>
+</div>
+</div>
+<div class="app-inner">
+<div class="nav">
+<div class="logo">
+<div class="mark">🕷️</div>
+<div class="txt"><b>24th Birthday</b></div>
+</div>
+<div class="badge-pill">Sept 10</div>
+</div>
+<div class="backdrop">
+<svg class="web" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
+<circle cx="400" cy="250" r="60"/>
+<circle cx="400" cy="250" r="130"/>
+<circle cx="400" cy="250" r="200"/>
+<line x1="400" y1="250" x2="400" y2="0"/>
+<line x1="400" y1="250" x2="400" y2="500"/>
+<line x1="400" y1="250" x2="100" y2="100"/>
+<line x1="400" y1="250" x2="700" y2="100"/>
+<line x1="400" y1="250" x2="100" y2="400"/>
+<line x1="400" y1="250" x2="700" y2="400"/>
+</svg>
+<div class="headline">
+<div class="eyebrow"></div>
+<h1>Happy 24th Birthday</h1>
+</div>
+<button class="shoot-btn" id="heroFireBtn">🕸️ CLICK HERE</button>
+</div>
+</div>
+</div>
+</div>
+<footer>Happy 24th 🕸️</footer>
+<!-- fullscreen sequence: web burst + 24 reveal, then the letter -->
+<div class="fullscreen-overlay" id="overlay">
+<div class="web-burst-full" id="webBurstFull">
+<svg viewBox="0 0 800 800" preserveAspectRatio="none">
+<g id="burstLinesFull"></g>
+</svg>
+</div>
+<div class="letter-full" id="letterFull">
+<div class="letter-inner">
+<button class="close-btn" id="closeBtn" aria-label="Close the letter">✕</button>
+<div class="paper-full">
+Happy 24. Maybe birthdays still mean something to u. Maybe they don't anymore. Either way, I hope Allah blesses u wherever u are. I hope u get everything you've been dreaming of and working so hard for. I hope 24 is kind to u, and that u find more peace.
+I don't know where u are now, or what ur life looks like these days. But I still hope you're happy wherever u are. May Allah always protect u, guide every step u take, and make things easy for u.
+<div class="sign-off">From Yasmin</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+const heroFireBtn = document.getElementById('heroFireBtn');
+const overlay = document.getElementById('overlay');
+const webBurstFull = document.getElementById('webBurstFull');
+const burstLinesFull = document.getElementById('burstLinesFull');
+const letterFull = document.getElementById('letterFull');
+const closeBtn = document.getElementById('closeBtn');
+function buildBurstLinesFull(){
+burstLinesFull.innerHTML = '';
+const cx = 400, cy = 400;
+for(let i = 0; i < 24; i++){
+const angle = (i / 24) * Math.PI * 2;
+const x2 = cx + Math.cos(angle) * 600;
+const y2 = cy + Math.sin(angle) * 600;
+const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+line.setAttribute('x1', cx); line.setAttribute('y1', cy);
+line.setAttribute('x2', x2); line.setAttribute('y2', y2);
+line.style.animationDelay = (Math.random() * 0.2) + 's';
+burstLinesFull.appendChild(line);
+}
+}
+function openSequence(){
+overlay.classList.add('active');
+buildBurstLinesFull();
+webBurstFull.classList.remove('fire');
+void webBurstFull.offsetWidth;
+webBurstFull.classList.add('fire');
+letterFull.classList.remove('show');
+setTimeout(()=>{
+letterFull.classList.add('show');
+}, 950);
+}
+function closeSequence(){
+letterFull.classList.remove('show');
+webBurstFull.classList.remove('fire');
+overlay.classList.remove('active');
+}
+heroFireBtn.addEventListener('click', openSequence);
+closeBtn.addEventListener('click', closeSequence);
+</script>
+</body>
+</html>
+
+
